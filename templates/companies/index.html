@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'companies/css/main.css' %}">
+<div id="companies-container">
+    {% for company in companies %}
+        {% include 'companies/single_company.html' with company=company %}
+    {% endfor %}
+</div>
+{% endblock %}

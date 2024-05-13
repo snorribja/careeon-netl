@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'jobs/css/main.css' %}">
+
+<div class="home">
+    <div class="search-container">
+        <div class="form-container">
+            <form method="GET" action="">
+                <div class="search-bar">
+                    <input type="text" name="keyword" value="{{ request.GET.keyword|default:'' }}" placeholder="Job title, company, any keyword..." aria-label="keyword">
+                    <input type="text" name="location" value="{{ request.GET.location|default:'' }}" placeholder="Location" aria-label="location">
+                    <button type="submit" id="searchButton">Search</button>
+                </div>
+                <div class="filter-bar">
+                    <select name="salary_range">
+                        <option value="">Select Salary Range</option>
+                        <option value="0-50000" {% if request.GET.salary_range == "0-50000" %}selected{% endif %}>0-50k</option>
+                        <option value="50001-100000" {% if request.GET.salary_range == "50001-100000" %}selected{% endif %}>50k-100k</option>
+                        <option value="100001-" {% if request.GET.salary_range == "100001-" %}selected{% endif %}>100k+</option>
+                    </select>
+                
+                    <select name="job_type">
+                        <option value="">Job Type</option>
+                        <option value="full-time" {% if request.GET.job_type == "full-time" %}selected{% endif %}>Full-time</option>
+                        <option value="part-time" {% if request.GET.job_type == "part-time" %}selected{% endif %}>Part-time</option>
+                        <option value="internship" {% if request.GET.job_type == "internship" %}selected{% endif %}>Internship</option>
+                        <option value="seasonal" {% if request.GET.job_type == "seasonal" %}selected{% endif %}>Seasonal</option>
+                    </select>
+
+                    <select name="date_posted">
+                        <option value="">Date Posted</option>
+                        <option value="1" {% if request.GET.date_posted == "1" %}selected{% endif %}>Last 24 hours</option>
+                        <option value="3" {% if request.GET.date_posted == "3" %}selected{% endif %}>Last 3 days</option>
+                        <option value="7" {% if request.GET.date_posted == "7" %}selected{% endif %}>Last 7 days</option>
+                        <option value="14" {% if request.GET.date_posted == "14" %}selected{% endif %}>Last 14 days</option>
+                    </select>
+                
+                    <select name="education_required">
+                        <option value="">Education Level</option>
+                        <option value="no-education" {% if request.GET.education_required == "no-education" %}selected{% endif %}>No-Education</option>
+                        <option value="high-school-degree" {% if request.GET.education_required == "high-school-degree" %}selected{% endif %}>High School Degree</option>
+                        <option value="associate-degree" {% if request.GET.education_required == "associate-degree" %}selected{% endif %}>Associate Degree</option>
+                        <option value="bachelors" {% if request.GET.education_required == "bachelors" %}selected{% endif %}>Bachelors</option>
+                        <option value="masters" {% if request.GET.education_required == "masters" %}selected{% endif %}>Masters</option>
+                        <option value="doctoral" {% if request.GET.education_required == "doctoral" %}selected{% endif %}>Doctoral</option>
+                    </select>
+
+                    <select name="is_remote">
+                        <option value="">Select Work Type</option>
+                        <option value="remote" {% if request.GET.is_remote == "remote" %}selected{% endif %}>Remote</option>
+                        <option value="hybrid" {% if request.GET.is_remote == "hybrid" %}selected{% endif %}>Hybrid</option>
+                        <option value="on-site" {% if request.GET.is_remote == "on-site" %}selected{% endif %}>On-site</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="sort-bar"> 
+            <label>Sort by</label>
+            <form id="sort-form">
+                <select name="sort_by" onchange="this.form.submit()">
+                    <option value="due_date" {% if request.GET.sort_by == "due_date" %}selected{% endif %}>Due date</option>
+                    <option value="date_posted" {% if request.GET.sort_by == "date_posted" %}selected{% endif %}>Date posted</option>
+                </select>
+            </form>
+        </div>
+    </div>
+    <div class="job-section">
+        <div class="job-listings">
+            {% for job_offer in page_obj %}
+            <div class="job-offer" onclick="loadJobDetails('{{ job_offer.id }}');" 
+                 {% if forloop.first %}data-first-job-id="{{ job_offer.id }}"{% endif %}>
+                <div class="logo-container">
+                    <img id="logo-id-marel" src="{% static 'jobs/img/marel_logo_thumb.jpg' %}" alt="Marel logo">
+                </div>
+                <div class="job-details">
+                    <h3>{{ job_offer.title }}</h3>
+                    <span>{{ job_offer.company }}</span>
+                    <span>{{ job_offer.salary }}</span>
+                    <div class="tags">
+                        <span class="tag">{{ job_offer.location }}</span>
+                        <span class="tag">{{ job_offer.contract_type }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div id="job-detail-container" class="job-detail">
+            <!-- Job details will be loaded here -->
+        </div>
+    </div>
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+        
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+        
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}&keyword={{ request.GET.keyword|default_if_none:'' }}&location={{ request.GET.location|default_if_none:'' }}&salary_range={{ request.GET.salary_range|default_if_none:'' }}&job_type={{ request.GET.job_type|default_if_none:'' }}&date_posted={{ request.GET.date_posted|default_if_none:'' }}&education_required={{ request.GET.education_required|default_if_none:'' }}&is_remote={{ request.GET.is_remote|default_if_none:'' }}&sort_by={{ request.GET.sort_by|default_if_none:'' }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </div>
+</div>
+
+<div id="applyModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form id="applyForm">
+            <label for="cv">Upload CV:</label>
+            <input type="file" id="cv" name="cv" required>
+            <label for="coverLetter">Cover Letter:</label>
+            <textarea id="coverLetter" name="coverLetter" required></textarea>
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+</div>
+
+<script>
+
+//!þarf að fara yfir allan JS kóðan og skoða hvort við þurfum hann allann
+document.addEventListener('DOMContentLoaded', function() {
+    const firstJobElement = document.querySelector('[data-first-job-id]');
+    if (firstJobElement) {
+        loadJobDetails(firstJobElement.dataset.firstJobId);
+    }
+
+    const applyButton = document.querySelector('.apply-button');
+    const modal = document.getElementById('applyModal');
+    const closeButton = document.querySelector('.close');
+
+    applyButton.addEventListener('click', function() {
+        modal.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    const applyForm = document.getElementById('applyForm');
+    applyForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        
+        fetch('/submit-application-url', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Application submitted successfully!');
+                modal.style.display = 'none';
+            } else {
+                alert('Failed to submit application: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error submitting application. Please try again.');
+        });
+    });
+});
+
+
+function loadJobDetails(jobId) {
+    const url = `/jobs/${jobId}/`;
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        const container = document.getElementById('job-detail-container');
+        let buttonHTML = '';
+        if (!data.has_applied) {
+            buttonHTML = `<a href="/jobs/${data.id}/apply/">
+                            <button class="apply-button" type="submit">Apply Now</button>
+                          </a>`;
+        } else {
+            buttonHTML = '<button class="applied-button">Applied</button>';
+        }
+        container.innerHTML = `
+            <img src="{% static 'jobs/img/company_logo.jpg' %}" alt="Company Logo" class="company-logo">
+            <h1 class="job-title">${data.title}</h1>
+            <h2 class="job-company">${data.company}</h2>
+            <p class="job-description">${data.description}</p>
+            <div class="job-meta">
+                <span class="job-salary">Salary: ${data.salary}</span>
+                <span class="job-location">Address: ${data.address}</span>
+                <span class="job-date">Start date: ${data.start_date}</span>
+                <span class="job-deadline">Due date: ${data.due_date}</span>
+                
+            </div>
+            ${buttonHTML}
+        `;
+        container.style.display = 'block'; // Make the container visible
+    })
+    .catch(error => {
+        console.error('Error loading the job details:', error);
+        const container = document.getElementById('job-detail-container');
+        container.innerHTML = `<p>Error loading the job details. Please try again.</p>`;
+        container.style.display = 'block'; // Even on error, make the container visible to show the error message
+    });
+}
+
+function attachApplyButtonListener() {
+    const applyButton = document.querySelector('.apply-button');
+    const modal = document.getElementById('applyModal');
+    if(applyButton) {
+        applyButton.addEventListener('click', function() {
+            modal.style.display = 'block';
+        });
+    }
+}
+
+document.getElementById('salaryRangeSelect').addEventListener('change', function() {
+    const url = new URL(window.location.origin + '/jobs/filter'); // Adjust the URL as needed
+    const params = {
+        salary_range: this.value,
+        keyword: document.querySelector('input[name="keyword"]').value,
+        location: document.querySelector('input[name="location"]').value
+    };
+    url.search = new URLSearchParams(params).toString();
+
+    fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector('.job-listings').innerHTML = data.html;
+        })
+        .catch(error => console.error('Error fetching the jobs:', error));
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sortSelect = document.querySelector('select[name="sort_by"]');
+    sortSelect.addEventListener('change', function() {
+        this.form.submit(); 
+    });
+
+    document.querySelectorAll('.filter-bar select').forEach(select => {
+        select.addEventListener('change', function() {
+            this.form.submit();
+        });
+    });
+});
+
+document.getElementById('sort-form').onchange = function() {
+        this.submit();
+    };
+
+</script>
+
+{% endblock %}

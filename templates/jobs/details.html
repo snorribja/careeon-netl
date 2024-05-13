@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <h1>Job Offer Details</h1>
+    <p>ID: {{ job_offer.id }}</p>
+    <p>Title: {{ job_offer.title }}</p>
+    <p>Position: {{ job_offer.position }}</p>
+    <p>Description: {{ job_offer.description }}</p>
+    <p>Address: {{ job_offer.address }}</p>
+    <p>Salary: {{ job_offer.salary }}</p>
+    <p>Company ID: {{ job_offer.company_id }}</p>
+    <p>Start Date: {{ job_offer.start_date }}</p>
+    <p>Due Date: {{ job_offer.due_date }}</p>
+    
+
+    <a href="{% url 'apply_for_job' job_offer.id %}">
+        <button> Apply </button>
+    </a>
+{% endblock %}

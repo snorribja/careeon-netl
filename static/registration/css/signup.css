@@ -1,0 +1,72 @@
+/* General body and form styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E8FFF6;
+}
+
+.signup-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 50px auto;
+}
+
+/* Header styling */
+.form-header h1 {
+    text-align: center;
+    color: #10476E;
+}
+
+/* Form element styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Helper text styling */
+.form-text {
+    display: block;
+    margin-top: 5px;
+    color: #777;
+    font-size: 10px;
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #10476E;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.btn-primary:hover {
+    background-color: #004494;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .signup-form {
+        width: 90%;
+        margin-top: 20px;
+    }
+}

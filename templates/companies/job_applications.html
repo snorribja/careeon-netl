@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include 'navbar_employer.html' %}
+{% endblock %}
+
+{% block content %}
+    {% for application in applications %}
+    <a href="{% url 'show_applicant' application.job_offer.company.id application.job_offer.id application.applicant.id %}">
+        <button>
+            <p>{{ application.applicant.name }}</p>
+            <p>{{ application.status }}</p>
+            <p>{{ application.timestamp }}</p>
+        </button>
+    </a>
+    {% endfor %}
+{% endblock %}

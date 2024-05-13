@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'companies/css/company_details.css' %}">
+<div class="home">
+    <div class="cover-container">
+        {% if company.cover_image %}
+            <img id="cover-img" src="{{ company.cover_image.url }}" alt="{{ company.name }} cover image">
+        {% else %}
+            <p>{{ company.name }}</p>
+        {% endif %}
+    </div>
+    <div id="company-identity">
+        <div class="logo-container">
+            {% if company.logo %}
+                <img id="logo" src="{{ company.logo.url }}" alt="{{ company.name }} logo">
+            {% else %}
+                <p>No cover image available.</p>
+            {% endif %}
+        </div>
+        <p>{{ company.name }}</p>
+    </div>
+
+    <div id="company-description">
+        <h3>About the company</h3>
+        <p>{{ company.description }}</p>
+        <p>{{ company.website_url }}</p>
+    </div>
+
+    <div id="jobs">
+        <p>Available jobs</p>
+    </div>
+
+    <div id="active-jobs">
+        {% for job_offer in job_offers %}
+        <div id="available-job">
+            <h3>{{ job_offer.title }}</h3>
+            <p>{{ job_offer.position }}</p>
+            <p>{{ job_offer.description }}</p>
+            <p>{{ job_offer.address }}</p>
+            <p>{{ job_offer.start_date }}</p>
+            <p>{{ job_offer.due_date }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div id="social-media">
+        <div id="instagram">
+            <div class="logo-container">
+                <img id="instagram-logo" src="{% static 'companies/img/instagram-logo-img.jpg' %}" alt="instagram logo">
+            </div>
+            <p>{{ company.name }}</p>
+        </div>
+        <div id="facebook">
+            <div class="logo-container">
+                <img id="facebook-logo" src="{% static 'companies/img/facebook-logo-img.png' %}" alt="facebook logo">
+            </div>
+            <p>{{ company.name }}</p>
+        </div>
+        <div id="x">
+            <div class="logo-container">
+                <img id="twitter-logo" src="{% static 'companies/img/twitter-logo-img.png' %}" alt="twitter logo">
+            </div>
+            <p>{{ company.name }}</p>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
+
+
+
+

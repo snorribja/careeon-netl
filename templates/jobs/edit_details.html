@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include 'navbar_employer.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Edit Job Offer: {{ job_offer.title }}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Job Title</label>
+            <input type="text" id="title" name="title" value="{{ job_offer.title }}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="position">Position</label>
+            <input type="text" id="position" name="position" value="{{ job_offer.position }}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" class="form-control" required>{{ job_offer.description }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" value="{{ job_offer.address }}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="salary">Salary</label>
+            <input type="number" id="salary" name="salary" step="0.01" value="{{ job_offer.salary }}" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Job Offer</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'global/css/navbar_jobseeker.css' %}">
+<nav>
+    <div id="nav-content">
+        <ul id="nav-list">
+
+            <li id="nav-logo">
+                <a href="/">
+                    <div id="nav-logo-content">
+                        <img id="nav-logo-img" src="{% static 'global/img/logo-img.png' %}" alt="careeon logo image">
+                        <img id="nav-logo-text" src="{% static 'global/img/logo-text.png' %}" alt="careeon logo text">
+                    </div>
+                </a>
+            </li>
+            
+            <div class="spacer"></div>
+
+            <li><a id="nav-jobs" href="{% url 'list_jobs' %}">Jobs</a></li>
+            <li><a id="nav-companies" href="{% url 'list_companies' %}">Companies</a></li>
+            
+            {% if user.is_authenticated %}
+                <li><a id="nav-applications" href="{% url 'show_user_applications' user.id%}">My Applications</a></li>
+            {% endif %}
+
+            <div class="spacer"></div>
+
+            {% if user.is_authenticated %}
+                <li><a id="nav-profile" href="{% url 'show_user_profile' user.id%}">{{ user }}</a></li>
+            {% else %}
+                <li><a id="nav-signin" href="{% url 'login' %}">Sign In</a></li>
+            {% endif %}
+
+            <span id="nav-pipe">|</span>
+
+            {% if user.is_authenticated and user.primary_company %}
+                <li><a id="nav-postjob" href="{% url 'show_company_job_offers' user.primary_company.id %}"> Post Job</a></li>
+            {% else %}
+                <li><a id="nav-postjob" href="{% url 'signup_company' %}"> Post Job</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

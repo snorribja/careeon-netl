@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block navbar %}
+    {% include 'navbar_employer.html' %}
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'users/css/main.css' %}">
+    <div class="container mt-5">
+        <h1>Applicant Details</h1>
+        <h2>{{ applicant.name }} </h2>
+        <p><strong>Email:</strong> {{ applicant.email }}</p>
+        <p><strong>Phone:</strong> {{ applicant.phone }}</p>
+    
+        <h3>Job Offer Details</h3>
+        <p><strong>Title:</strong> {{ job_offer.title }}</p>
+        <p><strong>Position:</strong> {{ job_offer.position }}</p>
+        <p><strong>Company:</strong> {{ company.name }}</p>
+    
+        {% if application %}
+            <h3>Application Information</h3>
+            <p><strong>Date Applied:</strong> {{ application.date_applied }}</p>
+            <p><strong>Status:</strong> {{ application.status }}</p>
+        {% else %}
+            <p>No application information found for this user and job.</p>
+        {% endif %}
+    </div>
+    
+    <form method="POST" action="{% url 'show_applicant' company.id job_offer.id applicant.id %}">
+        {% csrf_token %}
+        {% if application %}
+            <button name="status" value="hired" class="{% if application.status == 'hired' %}btn-green{% else %}btn-default{% endif %}">Hire</button>
+            <button name="status" value="interview" class="{% if application.status == 'interview' %}btn-green{% else %}btn-default{% endif %}">Invite for Interview</button>
+            <button name="status" value="declined" class="{% if application.status == 'declined' %}btn-green{% else %}btn-default{% endif %}">Decline</button>
+        {% endif %}
+    </form>
+{% endblock %}

@@ -1,0 +1,97 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'home/css/main.css' %}">
+    <div id="home-content">
+        <div id="main-section">
+            <div id="primarytext-content">
+                <h1 id="primaryphrase">KEEP CALM AND
+                    <span id="primaryphrase-logo-text">
+                        <span id="primaryphrase-logo-text-green">CAREE</span><span id="primaryphrase-logo-text-blue">ON</span>
+                    </span>
+                    <br> WITH YOUR CAREER.
+                </h1>
+                <h2 id="secondaryphrase">Work with smart, fun and supportive people</h2>
+            </div>
+            <a href="{% url 'list_jobs' %}">
+                <button id="findnextjob">Find your next job</button>
+            </a>
+            <img id="main-content-animated-img" src="{% static 'home/img/animated-handshake.png' %}" alt="animated people handshaking">
+        </div>
+        <div id="premium-employers-section">
+            <div id="premium-employers-main-section">
+                <div id="premium-employers-caption">Premium Employers</div>
+                <div id="premium-employers-flex-container">
+                    <div id="premium-employers-container">
+                        {% for employer in premium_employers %}
+                            {% include 'companies/single_company.html' with company=employer %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div id="premium-employers-slidecontrol">
+                    <button id="premium-employers-btn">
+                        <div id="premium-employers-btn-content">
+
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="trending-jobs-section">
+            <div id="trending-jobs-content">
+                <div id="trending-jobs-caption">Discover trending job offers</div>
+                <div id="trending-jobs-container">
+                    {% for job in trending_job_offers %}
+                        {% include 'jobs/single_trending_job.html' with job=job %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div id="contact-us-section">
+            <div id="contact-us-content">
+                <div id=contact-us-text>Got a question?</div>
+                <button id="contact-us-btn">Contact Us</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('premium-employers-container');
+            const total_premier_employers = container.children.length;
+
+            if (total_premier_employers <= 4) {
+                return;
+            }
+
+            container.style.animation = 'slide 60s ease-in-out infinite alternate';
+            container.style.animationPlayState = 'running';
+
+
+            const toggleButton = document.getElementById('premium-employers-btn');
+
+            toggleButton.addEventListener('click', function() {
+                if (container.style.animationPlayState === 'paused') {
+                    container.style.animationPlayState = 'running';
+                } else {
+                    container.style.animationPlayState = 'paused';
+                }
+            });
+        
+            container.addEventListener('mouseenter', () => {
+                container.style.animationPlayState = 'paused';
+            });
+        
+            container.addEventListener('mouseleave', () => {
+                if (toggleButton)
+                container.style.animationPlayState = 'running';
+            });
+        });
+    </script>
+        
+
+
+        
+
+{% endblock %}

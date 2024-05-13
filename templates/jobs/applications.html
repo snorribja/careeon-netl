@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+{% block navbar %}
+    {% include 'navbar_employer.html' %}
+{% endblock %}
+{% block content %}
+<h1>Applications for {{ job.title }}</h1>
+
+{% if applications %}
+    <ul>
+        {% for application in applications %}
+            <li>
+                <h3>{{ application.candidate_name }}</h3>
+                <p><strong>Email:</strong> {{ application.candidate_email }}</p>
+                <p><strong>Resume:</strong> {{ application.resume }}</p>
+                <p><strong>Cover Letter:</strong> {{ application.cover_letter }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No applications found for this job.</p>
+{% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,45 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'companies/css/main.css' %}">
+<a href="{% url 'show_company_detail' company.id %}">
+    <div class="company-container">
+        <div class="company-images">
+            {% if company.cover_image and company.logo %}
+                <img class="company-image company-image-logo" src="{{ company.logo.url }}" alt="{{ company.name }} logo">
+                <img class="company-image company-image-cover" src="{{ company.cover_image.url }}" alt="{{ company.name }} cover image">
+            {% elif company.logo %}
+                <img class="company-image-logo" src="{{ company.logo.url }}" alt="{{ company.name }} logo">
+            {% elif company.cover_image %}
+                <img class="company-image-cover" src="{{ company.cover_image.url }}" alt="{{ company.name }} cover image">
+            {% else %}
+                <p class="company-name-logo">{{ company.name }}</p>
+            {% endif %}
+            
+        </div>
+        <div class="company-details">
+            <div class="company-name">{{ company.name }}</div>
+            <div class="company-description">{{ company.brief_description }}</div>
+            <div class="company-job-offers">{{ company.total_active_job_offers }} active job offers</div>
+        </div>
+    </div>
+</a>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.company-container').forEach(container => {
+            const companyImages = container.querySelectorAll('.company-image');
+            let currentIndex = 0;
+            
+            if (companyImages.length > 0) {
+                companyImages[0].style.opacity = 1;
+            }
+
+            setInterval(() => {
+                const nextIndex = (currentIndex + 1) % companyImages.length; 
+                
+                companyImages[currentIndex].style.opacity = 0;
+                companyImages[nextIndex].style.opacity = 1;
+                
+                currentIndex = nextIndex;
+            }, 4000);
+        });
+    });
+</script>

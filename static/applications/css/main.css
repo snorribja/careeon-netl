@@ -1,0 +1,48 @@
+#user-application-container {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 10px;
+    padding-left: 20px;
+    padding-top: 5px;
+    margin-left: 80px;
+    margin-bottom: 3px;
+    width: 350px;
+    height: 180px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #002743;
+    overflow: visible;
+    text-decoration: none;
+    background-color: white;
+}
+
+#user-application-container * {
+    text-decoration: none;
+}
+
+#user-application-container a {
+    text-decoration: none;
+    color: #002743;
+    display: block;
+    height: 100%;
+}
+
+.top-right-text {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    background-color: white;
+    padding: 5px;
+    font-size: small;
+    color: #002743;
+    z-index: 1;
+}
+
+#user-application-container:hover .top-right-text,
+#user-application-container:hover {
+    background-color: #ccc;
+}
+
+#user-application-container p::first-letter {
+    text-transform: uppercase;
+}

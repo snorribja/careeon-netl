@@ -1,0 +1,4 @@
+django
+psycopg
+django-extension
+selenium

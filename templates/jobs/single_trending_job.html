@@ -1,0 +1,14 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'jobs/css/single_trending_job.css' %}">
+<a href="{% url 'list_jobs' %}?keyword={{ job.keywords }}">
+    <div id="trending-job-content">
+        <div class="trending-job-caption">
+            <span class="trending-job-hashtag">#</span>
+            <span class="trending-job-maincaption">{{ job.keywords }}</span>
+        </div>
+        <div class="trending-job-results">
+            <span>{{ job.job_offer_count }}</span>
+            <span>results</span>
+        </div>
+    </div>
+</a>

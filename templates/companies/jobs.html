@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block navbar %}
+    {% include 'navbar_employer.html' %}
+{% endblock %}
+
+{% block content %}
+    <h1>Jobs at {{ company.name }}</h1>
+
+    <ul>
+        {% for job_offer in job_offers %}
+            <li>
+            <a href="{% url 'show_company_job_applications' company_id=user.primary_company.id job_id=job_offer.id %}">
+                <button>
+                {{ job_offer.title }}<br>{{ job_offer.position }}
+                </button>
+            </a>
+                <a href = "{% url 'edit_job_offer' company_id=user.primary_company.id job_id=job_offer.id %}">
+                <button>
+                Edit job offer
+                </button>
+                </a>
+
+
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,39 @@
+
+
+body {
+    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #10476E;
+    font-size: 3rem;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #10476E;
+    font-size: 1rem;
+    font-weight: 100;
+}
+
+button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    background-color: #002743;
+    padding: 15px 20px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #10476E;
+}
+
+
+

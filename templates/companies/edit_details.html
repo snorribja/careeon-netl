@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include 'navbar_employer.html' %}
+{% endblock %}
+
+<h1>Edit {{ company.name }} Details</h1>
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+</form>
+{% endblock %}

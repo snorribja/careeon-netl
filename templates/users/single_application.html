@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'applications/css/main.css' %}">
+
+    <div id="user-application-container" class="user-application-container">
+
+
+        <h3 id = "job_title">{{ application.job_offer.title }} - {{ application.job_offer.job_type }}</h3>
+        <p>{{ application.job_offer.company.name }}</p>
+        <p>{{ application.status }}</p>
+        <p>Submitted {{ application.timestamp|date:"F d, Y" }}</p>
+        <div class="top-right-text">2 days</div>
+        </div>
+
+
+

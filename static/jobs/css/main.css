@@ -1,0 +1,307 @@
+
+.home {
+    width: 80%;
+    margin: auto;
+    padding-top: 20px;
+}
+
+
+
+.form-container {
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+.job-offer {
+    display: flex;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 100%; 
+    height: 10em;
+    font-family: Arial;
+}
+
+.job-offer:hover {
+    border: 1px solid #10476E;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+.logo-container img {
+    width: 100px;
+    margin-right: 20px;
+}
+
+.job-details {
+    flex-grow: 1;
+}
+
+.job-details h3 {
+    margin-top: 10px;
+    color: #333;
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tag {
+    background: #eee;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+.search-bar {
+    display: flex;
+    margin: 1rem 8rem;
+    gap: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 0px 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.search-bar form {
+    display: flex;
+    align-items: center;
+}
+
+
+.search-bar input[type="text"] {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    margin-right: 8px;
+    padding: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.search-bar input[name="keywordSearchName"] {
+    width: 35%;
+}
+
+.search-bar input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+
+.search-bar button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #10476E;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin: 10px 0;
+}
+
+
+.search-bar button:hover {
+    background-color: #1774b6;
+}
+
+.search-bar input[type="text"]:focus {
+    box-shadow: 0 1px 0 #10476E;
+}
+
+
+
+#logo-id-marel {
+    max-width: 170px;
+    max-height: 125px;
+    width: auto;
+    height: auto;
+}
+
+a {
+    color: #10476E;
+    text-decoration: none;
+}
+
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+}
+
+.pagination a {
+    color: #337ab7;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.pagination a:hover {
+    color: #23527c;
+    background-color: #e9e9e9;
+    border-color: #ddd;
+}
+
+.pagination .current {
+    padding: 5px 10px;
+    background-color: #10476E;
+    color: #ffffff;
+    border-radius: 4px;
+}
+
+.pagination span.disabled {
+    padding: 5px 10px;
+    color: #bbb;
+}
+
+
+.job-section {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    width: 100%;
+    gap: 2%; 
+}
+
+.job-listings {
+    box-sizing: border-box; 
+    width: 48%; 
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+#job-detail-container {
+    display: none;
+    position: sticky;
+    top: 100px;
+    width: 45%;
+    padding: 20px;
+    margin-left: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+    z-index: 999;
+}
+
+
+.company-logo {
+    width: 100px; 
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.job-title {
+    font-size: 24px;
+    color: #333;
+}
+
+.job-company {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.job-description {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.job-meta span {
+    display: block; 
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.apply-button,
+.applied-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #10476E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+.applied-button {
+    background-color: #4AC395;
+}
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; /* Increased z-index */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.7); /* Made darker for visibility */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* Adjusted for better centering */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; 
+}
+
+
+
+.filter-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.filter-bar select {
+    padding: 8px 10px; 
+    width: 100%; 
+    max-width: 200px; 
+    margin: 0 10px 10px 0; 
+    border: 2px solid #ccc; 
+    border-radius: 5px; 
+    background-color: #fff;
+    font-size: 16px; 
+    color: #333; 
+    cursor: pointer;
+    appearance: none;
+    -moz-appearance: none; 
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2212%22%20height%3D%2212%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpolygon%20fill%3D%22%23333%22%20points%3D%226,9%201,3%2011,3%22/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center; 
+    background-size: 12px; 
+}
+
+
+.filter-bar select:hover {
+    border-color: #888;
+}
+
+.filter-bar select:focus {
+    border-color: #10476E;
+    outline: none;
+}
+

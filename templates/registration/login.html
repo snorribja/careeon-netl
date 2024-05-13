@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>Login</p>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.username.label_tag }}
+        {{ form.username }}
+    
+        {{ form.password.label_tag }}
+        {{ form.password }}
+        <button type="submit">Login</button>
+
+        {% if form.non_field_errors %}
+            <div>
+                <strong>{{ form.non_field_errors }}</strong>
+            </div>
+        {% endif %}
+    </form>
+    <a href="{% url 'signup' %}"><button>Sign Up</button></a>
+{% endblock %}

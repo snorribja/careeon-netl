@@ -1,0 +1,175 @@
+
+footer {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    background-color: #002743;
+    padding: 20px 3rem; 
+}
+
+#footer-content {
+    max-width: min(1300px, 90vw);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.green-text {
+    color: #4AC395; 
+}
+
+
+.white-text {
+    color: white; 
+    font-style: italic;
+}
+
+#footer-top {
+    display: inline-flex;
+    max-width: min(1300px, 90vw);
+    padding-bottom: 50px;
+}
+
+#text-right-side li a {
+    color: lightgray;
+}
+
+#text-right-side li a:hover {
+    color: white;
+}
+
+#slogan-and-platforms {
+    margin-top: 100px;
+}
+
+#footer-slogan {
+    font-size: 40px; 
+    white-space: nowrap; 
+    margin-top: px;
+    margin-left: 50px;
+}
+
+#platforms {
+    position: relative;
+    bottom: 20px;
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    margin-top: 120px;
+}
+
+#facebook-logo {
+    width: 18px;
+
+}
+
+#instagram-logo {
+    width: 22px;
+}
+
+#youtube-logo {
+    width: 25px;
+
+}
+
+#twitter-logo {
+    width: 20px;
+}
+
+#white-logo-img {
+    width: 20px;
+}
+
+#white-logo-text {
+    width: 60px;
+    margin-right: 20px;
+}
+
+#footer-bottom {
+    max-width: min(1300px, 90vw);
+    width: 1300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 0.5px solid lightgray;
+    color: lightgray;
+    font-size: 0.7rem;
+}
+
+#footer-bottom ul {
+    list-style-type: none;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+#footer-bottom a {
+    text-decoration: none;
+    color: lightgray;
+}
+
+#footer-bottom a {
+    color: white;
+}
+
+#platforms p, #footer-links p {
+    color: white;
+}
+
+#resources {
+    margin-left: 90px; 
+}
+
+#job-seekers {
+    margin-left: 90px; 
+}
+
+#more-info {
+    margin-left: 250px;
+}
+
+
+#footer-links {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    position: absolute;
+    margin-left: 40%;
+    flex: 2 1 auto; 
+}
+
+#footer-links a {
+    font-size: 12px;
+    color: lightgray;
+    text-decoration: none;
+    padding: 4px 0;
+    display: block;
+}
+
+#footer-links a:hover {
+    color: white;
+}
+
+#footer-links ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#footer-links li {
+    margin: 10px 0;
+}
+
+#footer-links p {
+    font-size: 15px;
+}
+
+
+#footer-slogan p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}

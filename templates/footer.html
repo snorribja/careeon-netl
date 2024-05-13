@@ -1,0 +1,82 @@
+
+{% load static %}
+<footer>
+    <div id="footer-content">
+        <!-- Top Section: Combines the previous left and right into a single block for content -->
+        <div id="footer-top">
+            <!-- Slogan and Social Media Links -->
+            <div id="slogan-and-platforms">
+                <div id="footer-slogan">
+                    <p><span class="green-text">KEEP CALM AND</span> <span class="white-text">CAREEON</span></p>
+                    <p class="green-text">WITH YOUR CAREER.</p>
+                </div>
+                
+                <!-- <div id="platforms">
+                    <img id="facebook-logo" src="{% static 'global/img/facebook-logo-img.png' %}">
+                    <img id="instagram-logo" src="{% static 'global/img/instagram-logo-img.png' %}">
+                    <img id="youtube-logo" src="{% static 'global/img/youtube-logo-img.png' %}">
+                    <img id="twitter-logo" src="{% static 'global/img/twitter-logo-img.png' %}">
+                </div> -->
+            </div>
+        
+
+            <!-- Link Sections -->
+            <div id="footer-links">
+                <div id="more-info">
+                    <p>More Info</p>
+                    <ul>
+                        <li><a href="{% url 'list_jobs' %}">Help Us</a></li>
+                        <li><a href="{% url 'list_jobs' %}">About Us</a></li>
+                        <li><a href="{% url 'list_jobs' %}">The Team</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Reykjavik Uni</a></li>
+                    </ul>
+                </div>
+
+                <div id="job-seekers">
+                    <p>Job Seekers</p>
+                    <ul>
+                        <li><a href="{% url 'list_jobs' %}">Post Your Resume</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Companies</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Career Advise</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Company Reviews</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Salaries</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Find Certification</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Browse Job</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Explore Careers</a></li>
+                    </ul>
+                </div>
+
+                <div id="resources">
+                    <p>Resources</p>
+                    <ul>
+                        <li><a href="{% url 'list_jobs' %}">Post Your Resume</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Companies</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Career Advise</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Company Reviews</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Salaries</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Find Certification</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Browse Job</a></li>
+                        <li><a href="{% url 'list_jobs' %}">Explore Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div id="footer-bottom">
+            <p id="text-left-side"> 
+                <!-- <img id="white-logo-img" src="{% static 'global/img/white-logo-img.png' %}">
+                <img id="white-logo-text" src="{% static 'global/img/white-logo-text.png' %}"> -->
+                &copy; 2024 CAREEON. All Rights Reserved</p>
+            <ul id="text-right-side">
+                <li><a href="{% url 'list_jobs' %}">Terms of service</a></li>
+                |
+                <li><a href="{% url 'list_jobs' %}">Privacy Police</a></li>
+                |
+                <li><a href="{% url 'list_jobs' %}">Refund Police</a></li>
+                |
+                <li><a href="{% url 'list_jobs' %}">Accessibility Policy</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,186 @@
+
+
+
+
+#home-content {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+#main-section {
+    background-color: #E8FFF6;
+    padding: 200px 130px 300px;
+}
+
+
+#primaryphrase {
+    color: #10476E;
+}
+
+#primaryphrase-logo-text-green {
+    color: #4AC395;
+}
+
+#primaryphrase-logo-text-blue {
+    color: #10476E;
+}
+
+#primaryphrase-logo-text {
+    font-style: italic;
+}
+
+#secondaryphrase {
+    color: #10476E;
+}
+
+
+#main-content-animated-img {
+    position: absolute;
+    width: 680px;
+    left: 800px;
+    top: 140px;
+}
+
+
+#findnextjob {
+    margin-top: 20px;
+}
+
+
+
+
+
+#premium-employers-section {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#premium-employers-main-section {
+    position: relative;
+    width: 50%;
+}
+
+#premium-employers-caption {
+    position: relative;
+    left: 0px;
+    font-size: x-large;
+    color: #002743;
+    margin: 30px 0 20px 100px;
+}
+
+#premium-employers-slidecontrol {
+    position: relative;
+    height: 30px;
+}
+
+#premium-employers-btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #D9D9D9;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 15px;
+    padding: 0;
+}
+
+
+#premium-employers-flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#premium-employers-container {
+    display: inline-flex;
+    overflow: visible;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-33%); }
+    50% { transform: translateX(0); }
+    75% { transform: translateX(33%); }
+    100% { transform: translateX(0); }
+}
+
+
+
+
+
+
+
+#trending-jobs-section {
+    background-color: #FAFAFA;
+    height: 200px;
+}
+
+
+#trending-jobs-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#trending-jobs-caption {
+    font-size: large;
+    color: #002743;
+    margin: 20px 0 20px 100px;
+}
+
+
+
+
+
+
+
+#contact-us-section {
+    background-color: #E8FFF6;
+    height: 200px;
+}
+
+
+#contact-us-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#contact-us-content {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contact-us-text {
+    color: #002743;
+    font-size: x-large;
+    margin-bottom: 20px;
+}
+
+#contact-us-btn {
+    background-color: rgba(255, 255, 255, 0);
+    width: 150px;
+    color: #002743;
+    border: 2px solid #002743;
+}
+
+
+#contact-us-btn:hover {
+    color: #10476E;
+    border: 2px solid #10476E;
+}
